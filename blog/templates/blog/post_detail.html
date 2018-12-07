@@ -1,0 +1,27 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+    <article class="card my-3">
+        <div class="card-body">
+            <div class="media">
+                <img class="mr-3 w-25 image-thumbnail rounded-circle" src="{{ post.author.profile.image.url }}" alt="article">
+                <div class="media-body">
+                    <a href="{% url 'user-posts' post.author.username %}">{{post.author}}</a>
+                    <small>{{post.date_posted|date:"F d Y"}}</small>
+                    <h2 class="mt-0">{{ post.title }}</h2>
+                    {{post.content}}
+                    
+                    {% if user.is_authenticated and post.author == user %}
+                    <div>
+                        <a href="{% url 'post-update' post.id %}" class="card-link">Edit</a>
+                        <a href="{% url 'post-delete' post.id %}" class="card-link text-danger">Delete</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </article>
+
+
+{% endblock %}

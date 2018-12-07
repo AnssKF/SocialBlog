@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    
+    <div class="row">
+        <form method="POST" class="w-100">
+            {% csrf_token %}
+            <fieldset>
+                <legend class="border-bottom mb-4">Sign up</legend>
+                {{ regForm|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info">Signup</button>
+                <small class="text-muted">Or just <a href="{% url 'login' %}">Login</a> </small>
+            </div>
+        </form>
+    </div>
+
+{% endblock %}
