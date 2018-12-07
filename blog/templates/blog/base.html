@@ -37,6 +37,7 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
+                        <a class="dropdown-item" href="{% url 'password_reset' %}">Reset Password</a>
                         {% if user.is_authenticated %}
                         <li class="nav-item active">
                             <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
